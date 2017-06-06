@@ -8,20 +8,44 @@
 
 /* Begin PBXBuildFile section */
 		F420CC531E7BA27E00448B6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F420CC521E7BA27E00448B6B /* AppDelegate.swift */; };
-		F420CC551E7BA27E00448B6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F420CC541E7BA27E00448B6B /* ViewController.swift */; };
+		F420CC551E7BA27E00448B6B /* LongControllerOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F420CC541E7BA27E00448B6B /* LongControllerOLD.swift */; };
 		F420CC581E7BA27E00448B6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F420CC561E7BA27E00448B6B /* Main.storyboard */; };
 		F420CC5A1E7BA27E00448B6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F420CC591E7BA27E00448B6B /* Assets.xcassets */; };
 		F420CC5D1E7BA27E00448B6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F420CC5B1E7BA27E00448B6B /* LaunchScreen.storyboard */; };
+		F458EBBC1EA2C79500DAA8AF /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F458EBBB1EA2C79500DAA8AF /* CircleView.swift */; };
+		F46293291E7E1B900013537E /* KDCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46293281E7E1B900013537E /* KDCircularProgress.swift */; };
+		F462932B1E7E46A50013537E /* InfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F462932A1E7E46A50013537E /* InfoController.swift */; };
+		F46800241EA9A0AB00A6908D /* LongController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46800231EA9A0AB00A6908D /* LongController.swift */; };
+		F4687B891EC6A8A7006FF4A3 /* ModeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4687B881EC6A8A7006FF4A3 /* ModeController.swift */; };
+		F46B8DB61EA83EF900CAC7A1 /* Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B8DB51EA83EF900CAC7A1 /* Bluetooth.swift */; };
+		F46B8DB81EA8590F00CAC7A1 /* BluetoothDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B8DB71EA8590F00CAC7A1 /* BluetoothDelegate.swift */; };
+		F46BDECC1E7BB0CE00801853 /* GoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46BDECB1E7BB0CE00801853 /* GoController.swift */; };
+		F47902FC1E7F5EBF00AEE604 /* OptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47902FB1E7F5EBF00AEE604 /* OptionsController.swift */; };
+		F48786741EE7014F00E527B4 /* BatteryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48786731EE7014F00E527B4 /* BatteryController.swift */; };
+		F4F450881EBC2CF200D6B515 /* Transmissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F450871EBC2CF200D6B515 /* Transmissions.swift */; };
+		F4F4508D1EBC315900D6B515 /* TransmissionsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F4508C1EBC315900D6B515 /* TransmissionsDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F420CC4F1E7BA27E00448B6B /* Long.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Long.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F420CC521E7BA27E00448B6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F420CC541E7BA27E00448B6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F420CC541E7BA27E00448B6B /* LongControllerOLD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongControllerOLD.swift; sourceTree = "<group>"; };
 		F420CC571E7BA27E00448B6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F420CC591E7BA27E00448B6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F420CC5C1E7BA27E00448B6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F420CC5E1E7BA27F00448B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F458EBBB1EA2C79500DAA8AF /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		F46293281E7E1B900013537E /* KDCircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDCircularProgress.swift; sourceTree = "<group>"; };
+		F462932A1E7E46A50013537E /* InfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoController.swift; sourceTree = "<group>"; };
+		F46800231EA9A0AB00A6908D /* LongController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongController.swift; sourceTree = "<group>"; };
+		F4687B881EC6A8A7006FF4A3 /* ModeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeController.swift; sourceTree = "<group>"; };
+		F46B8DB51EA83EF900CAC7A1 /* Bluetooth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bluetooth.swift; sourceTree = "<group>"; };
+		F46B8DB71EA8590F00CAC7A1 /* BluetoothDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothDelegate.swift; sourceTree = "<group>"; };
+		F46BDECB1E7BB0CE00801853 /* GoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoController.swift; sourceTree = "<group>"; };
+		F47902FB1E7F5EBF00AEE604 /* OptionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsController.swift; sourceTree = "<group>"; };
+		F48786731EE7014F00E527B4 /* BatteryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryController.swift; sourceTree = "<group>"; };
+		F4F450871EBC2CF200D6B515 /* Transmissions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transmissions.swift; sourceTree = "<group>"; };
+		F4F4508C1EBC315900D6B515 /* TransmissionsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmissionsDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +79,57 @@
 			isa = PBXGroup;
 			children = (
 				F420CC521E7BA27E00448B6B /* AppDelegate.swift */,
-				F420CC541E7BA27E00448B6B /* ViewController.swift */,
+				F4F4508B1EBC310E00D6B515 /* Transmissions */,
+				F4F450891EBC30E900D6B515 /* Bluetooth */,
+				F4F4508A1EBC310000D6B515 /* ViewControllers */,
 				F420CC561E7BA27E00448B6B /* Main.storyboard */,
 				F420CC591E7BA27E00448B6B /* Assets.xcassets */,
 				F420CC5B1E7BA27E00448B6B /* LaunchScreen.storyboard */,
 				F420CC5E1E7BA27F00448B6B /* Info.plist */,
+				F458EBBA1EA2C75F00DAA8AF /* Plug-ins */,
 			);
 			path = Long;
+			sourceTree = "<group>";
+		};
+		F458EBBA1EA2C75F00DAA8AF /* Plug-ins */ = {
+			isa = PBXGroup;
+			children = (
+				F46293281E7E1B900013537E /* KDCircularProgress.swift */,
+				F458EBBB1EA2C79500DAA8AF /* CircleView.swift */,
+			);
+			name = "Plug-ins";
+			sourceTree = "<group>";
+		};
+		F4F450891EBC30E900D6B515 /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				F46B8DB51EA83EF900CAC7A1 /* Bluetooth.swift */,
+				F46B8DB71EA8590F00CAC7A1 /* BluetoothDelegate.swift */,
+			);
+			name = Bluetooth;
+			sourceTree = "<group>";
+		};
+		F4F4508A1EBC310000D6B515 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F48786731EE7014F00E527B4 /* BatteryController.swift */,
+				F420CC541E7BA27E00448B6B /* LongControllerOLD.swift */,
+				F46800231EA9A0AB00A6908D /* LongController.swift */,
+				F4687B881EC6A8A7006FF4A3 /* ModeController.swift */,
+				F46BDECB1E7BB0CE00801853 /* GoController.swift */,
+				F47902FB1E7F5EBF00AEE604 /* OptionsController.swift */,
+				F462932A1E7E46A50013537E /* InfoController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F4F4508B1EBC310E00D6B515 /* Transmissions */ = {
+			isa = PBXGroup;
+			children = (
+				F4F450871EBC2CF200D6B515 /* Transmissions.swift */,
+				F4F4508C1EBC315900D6B515 /* TransmissionsDelegate.swift */,
+			);
+			name = Transmissions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +205,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F420CC551E7BA27E00448B6B /* ViewController.swift in Sources */,
+				F46B8DB61EA83EF900CAC7A1 /* Bluetooth.swift in Sources */,
+				F46B8DB81EA8590F00CAC7A1 /* BluetoothDelegate.swift in Sources */,
+				F46293291E7E1B900013537E /* KDCircularProgress.swift in Sources */,
+				F46800241EA9A0AB00A6908D /* LongController.swift in Sources */,
+				F46BDECC1E7BB0CE00801853 /* GoController.swift in Sources */,
+				F4F4508D1EBC315900D6B515 /* TransmissionsDelegate.swift in Sources */,
+				F48786741EE7014F00E527B4 /* BatteryController.swift in Sources */,
+				F420CC551E7BA27E00448B6B /* LongControllerOLD.swift in Sources */,
 				F420CC531E7BA27E00448B6B /* AppDelegate.swift in Sources */,
+				F47902FC1E7F5EBF00AEE604 /* OptionsController.swift in Sources */,
+				F4687B891EC6A8A7006FF4A3 /* ModeController.swift in Sources */,
+				F458EBBC1EA2C79500DAA8AF /* CircleView.swift in Sources */,
+				F462932B1E7E46A50013537E /* InfoController.swift in Sources */,
+				F4F450881EBC2CF200D6B515 /* Transmissions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +339,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = RA3AN77S9R;
 				INFOPLIST_FILE = Long/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -272,6 +353,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = RA3AN77S9R;
 				INFOPLIST_FILE = Long/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -300,6 +382,7 @@
 				F420CC631E7BA27F00448B6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
