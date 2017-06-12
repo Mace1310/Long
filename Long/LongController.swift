@@ -44,6 +44,7 @@ class LongController: UIViewController, UITextFieldDelegate, BluetoothDelegate, 
         super.viewDidAppear(true)
         BluetoothManager.delegate = self
         TransmissionsManager.delegate = self
+        TransmissionsManager.requestModeCode()
         if BluetoothManager.optionsChanged() {
             if BluetoothManager.isConnected || BluetoothManager.isDiscovering {
                 BluetoothManager.disconnect()
@@ -56,8 +57,32 @@ class LongController: UIViewController, UITextFieldDelegate, BluetoothDelegate, 
     }
     
     func RPMResponseReceived(_ RPM1: UInt16, _ RPM2: UInt16) {}
-    
     func cellVoltagesResponseRecieved(_ Battery1: Transmissions.LipoBattery, _ Battery2: Transmissions.LipoBattery) {}
+
+    func modeCodeResponseRecieved(_ args: UInt8) {
+        switch args {
+        case 0x00:
+            ModeSelectedButton.setTitle("NORM", for: .normal)
+            break
+        case 0x01:
+            ModeSelectedButton.setTitle("BEG", for: .normal)
+            break
+        case 0x02:
+            ModeSelectedButton.setTitle("SPORT", for: .normal)
+            break
+        case 0x03:
+            ModeSelectedButton.setTitle("ECO", for: .normal)
+            break
+        case 0x04:
+            ModeSelectedButton.setTitle("AUTO", for: .normal)
+            break
+        case 0x05:
+            ModeSelectedButton.setTitle("PROG", for: .normal)
+            break
+        default:
+            break
+        }
+    }
     
     func systemStatusResponseRecieved(_ args: UInt8) {
         switch args {
@@ -73,6 +98,8 @@ class LongController: UIViewController, UITextFieldDelegate, BluetoothDelegate, 
         case 0x03:
             SystemStatusLabel.text = "BATTERY ERROR"
             break
+        case 0x04:
+            SystemStatusLabel.text = "WARMING UP..."
         default:
             break
         }
@@ -167,6 +194,7 @@ class LongController: UIViewController, UITextFieldDelegate, BluetoothDelegate, 
             TransmissionsManager.requestBoardName()
             TransmissionsManager.requestBatteryPercentage()
             TransmissionsManager.requestSystemStatus()
+            TransmissionsManager.requestModeCode()
         }
     }
     

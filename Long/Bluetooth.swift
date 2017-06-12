@@ -55,9 +55,29 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func updateOptions() {
-        DEVICE_NAME = StoredValues.string(forKey: "BLEName")
-        DEVICE_SERVICE_UUID = CBUUID(string: StoredValues.string(forKey: "ServiceUUID")!)
-        DEVICE_CHARACTERISTIC_UUID = CBUUID(string: StoredValues.string(forKey: "CharacteristicUUID")!)
+        if StoredValues.string(forKey: "BLEName") != nil {
+            DEVICE_NAME = StoredValues.string(forKey: "BLEName")
+        }
+        else {
+            DEVICE_NAME = "HMSoft"
+            StoredValues.set("HMSoft", forKey: "BLEName")
+        }
+        
+        if StoredValues.string(forKey: "ServiceUUID") != nil {
+            DEVICE_SERVICE_UUID = CBUUID(string: StoredValues.string(forKey: "ServiceUUID")!)
+        }
+        else {
+            DEVICE_SERVICE_UUID = CBUUID(string: "FFE0")
+            StoredValues.set("FFE0", forKey: "ServiceUUID")
+        }
+        
+        if StoredValues.string(forKey: "CharacteristicUUID") != nil {
+            DEVICE_CHARACTERISTIC_UUID = CBUUID(string: StoredValues.string(forKey: "CharacteristicUUID")!)
+        }
+        else {
+            DEVICE_CHARACTERISTIC_UUID = CBUUID(string: "FFE1")
+            StoredValues.set("FFE1", forKey: "CharacteristicUUID")
+        }
     }
     
     func optionsChanged() -> Bool {
@@ -107,12 +127,14 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func flushTxBuffer() {
-        txBufferDLE[0] = STX
-        applyDLE()
-        txBufferDLE[txLength] = ETX
-        txLength += 1
-        
-        writeArray()
+        if isConnected {
+            txBufferDLE[0] = STX
+            applyDLE()
+            txBufferDLE[txLength] = ETX
+            txLength += 1
+            
+            writeArray()
+        }
     }
     
     func applyDLE() {
@@ -233,6 +255,11 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             if rxCounter == 2 {
                 let args = rxBuffer[1]
                 TransmissionsManager.systemStatusResponse(args)
+            }
+        case 0x16:
+            if rxCounter == 2 {
+                let args = rxBuffer[1]
+                TransmissionsManager.modeCodeResponse(args)
             }
         default:
             break

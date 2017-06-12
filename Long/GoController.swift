@@ -73,12 +73,10 @@ class GoController: UIViewController, TransmissionsDelegate {
     }
     
     func batteryPercentageResponseRecieved(_ BatteryPercentage: UInt8) {}
-    
     func cellVoltagesResponseRecieved(_ Battery1: Transmissions.LipoBattery, _ Battery2: Transmissions.LipoBattery) {}
-    
     func boardNameResponseRecieved(_ BoardName: String) {}
-    
     func systemStatusResponseRecieved(_ args: UInt8) {}
+    func modeCodeResponseRecieved(_ args: UInt8) {}
     
     func RPMResponseReceived(_ RPM1: UInt16, _ RPM2: UInt16) {
         RPM1Label.text = String(RPM1)
@@ -104,6 +102,10 @@ class GoController: UIViewController, TransmissionsDelegate {
                 self.ConfirmLabel.alpha = 1
             })
         }
+    }
+    
+    @IBAction func emergencyStopPressed(sender: UIButton) {
+        TransmissionsManager.emergencyStop()
     }
     
     func cancelConfirmLabel() {

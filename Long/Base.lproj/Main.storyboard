@@ -675,6 +675,14 @@
                                         <rect key="frame" x="342" y="8" width="25" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6g9-Ld-2K2">
+                                        <rect key="frame" x="73" y="559" width="229" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                                        <state key="normal" title=" EMERGENCY STOP" image="Stop">
+                                            <color key="titleColor" red="0.75294117647058822" green="0.22352941176470587" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
@@ -772,14 +780,31 @@
                                 <state key="normal" title="BEGINNER" backgroundImage="Rectangle">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="beginnerButtonSelectedWithSender:" destination="tDw-oh-gSm" eventType="touchUpInside" id="Hel-pZ-26q"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnI-wT-1nl">
-                                <rect key="frame" x="137" y="251" width="100" height="100"/>
+                                <rect key="frame" x="201" y="251" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
                                 <state key="normal" title="AUTO" backgroundImage="Rectangle">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="autoButtonSelectedWithSender:" destination="tDw-oh-gSm" eventType="touchUpInside" id="6dm-0m-TbC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WV1-pv-cdc">
+                                <rect key="frame" x="16" y="143" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <state key="normal" title="NORMAL" backgroundImage="Rectangle">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="normalButtonSelectedWithSender:" destination="tDw-oh-gSm" eventType="touchUpInside" id="aUe-kG-Ijv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cxb-6w-IYC">
                                 <rect key="frame" x="259" y="143" width="100" height="100"/>
@@ -788,25 +813,12 @@
                                 <state key="normal" title="SPORT" backgroundImage="Rectangle">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vri-7P-Nzv">
-                                <rect key="frame" x="16" y="251" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
-                                <state key="normal" title="ECO" backgroundImage="Rectangle">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Sq-d1-DKI">
-                                <rect key="frame" x="259" y="251" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
-                                <state key="normal" title="PROGRAM" backgroundImage="Rectangle">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <connections>
+                                    <action selector="sportButtonSelectedWithSender:" destination="tDw-oh-gSm" eventType="touchUpInside" id="axF-SC-Ksj"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BETA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gly-pC-OmM">
-                                <rect key="frame" x="192" y="306" width="28" height="15"/>
+                                <rect key="frame" x="256" y="306" width="28" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                 <color key="textColor" red="0.75294117647058822" green="0.22352941176470587" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
@@ -824,17 +836,71 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WV1-pv-cdc">
-                                <rect key="frame" x="16" y="143" width="100" height="100"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zbu-E8-mqb">
+                                <rect key="frame" x="16" y="414" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aJ-Rh-Jpo">
+                                <rect key="frame" x="16" y="445" width="343" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1sH-YU-ztf">
+                                <rect key="frame" x="16" y="482" width="343" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text" base64-UTF8="YES">
+Cg
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="QQe-Fw-uxV">
+                                <rect key="frame" x="137" y="572" width="100" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="pageIndicatorTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" red="0.15294117647058825" green="0.68235294117647061" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jE6-A2-EJL">
+                                <rect key="frame" x="16" y="617" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="SET THIS MODE">
+                                    <color key="titleColor" red="0.15294117647058825" green="0.68235294117647061" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="setModeTouchWithSender:" destination="tDw-oh-gSm" eventType="touchUpInside" id="yEP-q0-Tgk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vri-7P-Nzv">
+                                <rect key="frame" x="74" y="251" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
-                                <state key="normal" title="NORMAL" backgroundImage="Rectangle">
+                                <state key="normal" title="ECO" backgroundImage="Rectangle">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="ecoButtonSelectedWithSender:" destination="tDw-oh-gSm" eventType="touchUpInside" id="2vr-oY-CyH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                     </view>
+                    <connections>
+                        <outlet property="AutoButton" destination="RnI-wT-1nl" id="o0R-XY-0ph"/>
+                        <outlet property="BeginnerButton" destination="2r4-nN-jWt" id="ckI-8h-fex"/>
+                        <outlet property="EcoButton" destination="vri-7P-Nzv" id="aqH-e2-o8r"/>
+                        <outlet property="InfoDescriptionText" destination="1sH-YU-ztf" id="Syv-mX-xoa"/>
+                        <outlet property="InfoIcon" destination="zbu-E8-mqb" id="HmX-C3-qyx"/>
+                        <outlet property="InfoPageIndicator" destination="QQe-Fw-uxV" id="qCh-aG-1NV"/>
+                        <outlet property="InfoTitleLabel" destination="7aJ-Rh-Jpo" id="L8c-1q-aCF"/>
+                        <outlet property="NormalButton" destination="WV1-pv-cdc" id="5PP-V7-cAG"/>
+                        <outlet property="SetModeButton" destination="jE6-A2-EJL" id="I4A-dF-2BO"/>
+                        <outlet property="SportButton" destination="Cxb-6w-IYC" id="y46-K7-7nu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgm-XJ-PNJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -945,6 +1011,9 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hun-pK-by6">
                                 <rect key="frame" x="310" y="271" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="ECOSwitchSwitchedWithSender:" destination="T9b-dq-Lzq" eventType="touchUpInside" id="grF-sA-CY0"/>
+                                </connections>
                             </switch>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Nq-wN-i7s">
                                 <rect key="frame" x="16" y="447" width="157" height="166"/>
@@ -1155,7 +1224,9 @@
                         <outlet property="B2C3Label" destination="yhs-Tz-ZtU" id="Nhb-wF-HcP"/>
                         <outlet property="B2C4Bar" destination="Ar9-h9-tzn" id="44E-JC-YDw"/>
                         <outlet property="B2C4Label" destination="Enf-Ox-3eV" id="Jre-xC-yRa"/>
+                        <outlet property="BatteryPercentageBar" destination="CKa-ea-GEB" id="9IF-YU-4aN"/>
                         <outlet property="BatteryPercentageLabel" destination="wBC-g8-3MN" id="KLF-tg-ZVL"/>
+                        <outlet property="ECOSwitch" destination="hun-pK-by6" id="tDY-tP-vAv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="90X-Ja-DRK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1178,6 +1249,7 @@
         <image name="Rectangle" width="100" height="100"/>
         <image name="Searching" width="100" height="100"/>
         <image name="Settings" width="100" height="100"/>
+        <image name="Stop" width="25" height="25"/>
         <image name="Tools" width="575" height="270"/>
     </resources>
 </document>

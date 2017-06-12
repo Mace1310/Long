@@ -13,6 +13,7 @@ class BatteryController: UIViewController, TransmissionsDelegate {
     let TransmissionsManager = Transmissions.T
     
     @IBOutlet weak var BatteryPercentageLabel: UILabel!
+    @IBOutlet weak var BatteryPercentageBar: UIView!
     @IBOutlet weak var B1C1Label: UILabel!
     @IBOutlet weak var B1C2Label: UILabel!
     @IBOutlet weak var B1C3Label: UILabel!
@@ -29,13 +30,19 @@ class BatteryController: UIViewController, TransmissionsDelegate {
     @IBOutlet weak var B2C2Bar: UIProgressView!
     @IBOutlet weak var B2C3Bar: UIProgressView!
     @IBOutlet weak var B2C4Bar: UIProgressView!
+    @IBOutlet weak var ECOSwitch: UISwitch!
+    
+    var UpdateTimer: Timer!
+    var CheckTimer: Timer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         TransmissionsManager.delegate = self
         TransmissionsManager.requestBatteryPercentage()
         TransmissionsManager.requestCellVoltage(0x01)
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateValues), userInfo: nil, repeats: true);
+        TransmissionsManager.requestModeCode()
+        UpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateValues), userInfo: nil, repeats: true);
+        CheckTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.checkConnection), userInfo: nil, repeats: true);
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,9 +55,42 @@ class BatteryController: UIViewController, TransmissionsDelegate {
         TransmissionsManager.requestCellVoltage(0x01)
     }
     
+    func checkConnection() {
+        if Bluetooth.CB.isConnected == false {
+            UpdateTimer.invalidate()
+            UpdateTimer = nil
+            CheckTimer.invalidate()
+            CheckTimer = nil
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     func RPMResponseReceived(_ RPM1: UInt16, _ RPM2: UInt16) {}
     func boardNameResponseRecieved(_ BoardName: String) {}
     func systemStatusResponseRecieved(_ args: UInt8) {}
+    
+    
+    func modeCodeResponseRecieved(_ args: UInt8) {
+        if args == 0x03 {
+            if ECOSwitch.isOn == false {
+                ECOSwitch.setOn(true, animated: true)
+            }
+        }
+        else {
+            if ECOSwitch.isOn {
+                ECOSwitch.setOn(false, animated: true)
+            }
+        }
+    }
+    
+    @IBAction func ECOSwitchSwitched(sender: UISwitch) {
+        if ECOSwitch.isOn {
+            TransmissionsManager.setModeCode(0x03)
+        }
+        else {
+            TransmissionsManager.setModeCode(0x00)
+        }
+    }
     
     func cellVoltageToProgress(_ cellVoltage: Float32!) -> Float {
         return (cellVoltage - 3.27) / (4.20 - 3.27)
@@ -78,14 +118,24 @@ class BatteryController: UIViewController, TransmissionsDelegate {
     func batteryPercentageResponseRecieved(_ BatteryPercentage: UInt8) {
         if BatteryPercentage == 101 {
             BatteryPercentageLabel.text = "ERROR"
+            UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
+                self.BatteryPercentageBar.frame.size.width = 0
+            }, completion: nil)
         }
         else {
             BatteryPercentageLabel.text = "\(BatteryPercentage) %"
+            UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
+                self.BatteryPercentageBar.frame.size.width = CGFloat(Double(BatteryPercentage) * 1.54)
+            }, completion: nil)
         }
     }
 
     
     @IBAction func downPressed(_ sender: Any) {
+        UpdateTimer.invalidate()
+        UpdateTimer = nil
+        CheckTimer.invalidate()
+        CheckTimer = nil
         dismiss(animated: true, completion: nil)
     }
 }

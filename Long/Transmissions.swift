@@ -27,6 +27,29 @@ class Transmissions: NSObject {
     
     private override init() { }
     
+    func emergencyStop() {
+        BluetoothManager.txBuffer[0] = 0x03
+        BluetoothManager.txLength = 1
+        BluetoothManager.flushTxBuffer()
+    }
+    
+    func setModeCode(_ args: UInt8) {
+        BluetoothManager.txBuffer[0] = 0x01
+        BluetoothManager.txBuffer[1] = args
+        BluetoothManager.txLength = 2
+        BluetoothManager.flushTxBuffer()
+    }
+    
+    func modeCodeResponse(_ args: UInt8) {
+        delegate?.modeCodeResponseRecieved(args)
+    }
+    
+    func requestModeCode() {
+        BluetoothManager.txBuffer[0] = 0x16
+        BluetoothManager.txLength = 1
+        BluetoothManager.flushTxBuffer()
+    }
+    
     func systemStatusResponse(_ args: UInt8) {
         delegate?.systemStatusResponseRecieved(args)
     }
