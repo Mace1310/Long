@@ -231,7 +231,7 @@ class LongController: UIViewController, UITextFieldDelegate, BluetoothDelegate, 
         BatteryProgressBar.animate(toAngle: 270, duration: 1, completion: nil)
         ModeSelectedButton.isEnabled = false
         ModeSelectedButton.setTitle("....", for: .normal)
-        GOButton.isEnabled = false
+        GOButton.isEnabled = true                   //RIMETTERE FALSE
         ForwardIcon.isHidden = true
         SETTINGSButton.isEnabled = false
         SystemStatusLabel.text = "DISCONNECTED"

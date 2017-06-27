@@ -675,19 +675,56 @@
                                         <rect key="frame" x="342" y="8" width="25" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6g9-Ld-2K2">
-                                        <rect key="frame" x="73" y="559" width="229" height="25"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6g9-Ld-2K2">
+                                        <rect key="frame" x="0.0" y="536" width="375" height="56"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
-                                        <state key="normal" title=" EMERGENCY STOP" image="Stop">
-                                            <color key="titleColor" red="0.75294117647058822" green="0.22352941176470587" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.75294117647058822" green="0.22352941176470587" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                                        <state key="normal" title="EMERGENCY STOP">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="emergencyStopPressedWithSender:" destination="5Xk-cN-hha" eventType="touchUpInside" id="nql-oa-UJc"/>
+                                        </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Stop" translatesAutoresizingMaskIntoConstraints="NO" id="Y5q-f2-WaB">
+                                        <rect key="frame" x="8" y="544" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <view alpha="0.40000000596046448" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yDB-4j-Ihh" userLabel="Line">
+                                        <rect key="frame" x="0.0" y="479" width="375" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tUe-JL-uIF">
+                                        <rect key="frame" x="0.0" y="480" width="375" height="56"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                                        <state key="normal" title="CRUISE CONTROL">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="CruiseControlButtonPressedWithSender:" destination="5Xk-cN-hha" eventType="touchUpInside" id="5P4-MX-2uX"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CruiseControlOFF" translatesAutoresizingMaskIntoConstraints="NO" id="SYt-V4-mlk">
+                                        <rect key="frame" x="8" y="488" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wM0-2z-brg">
+                                        <rect key="frame" x="318" y="493" width="51" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="onTintColor" red="0.15294117647058825" green="0.68235294117647061" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="CruiseControlSwitchPressedWithSender:" destination="5Xk-cN-hha" eventType="touchUpInside" id="iFf-eH-sfc"/>
+                                        </connections>
+                                    </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Dtq-Dq-LNJ" appends="YES" id="7nY-t2-sme"/>
+                                    <outletCollection property="gestureRecognizers" destination="RbC-Bd-9Nz" appends="YES" id="cr1-Q7-kyg"/>
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Confirm?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaI-zh-ITW">
@@ -703,6 +740,9 @@
                     </view>
                     <connections>
                         <outlet property="ConfirmLabel" destination="ZaI-zh-ITW" id="vp0-lZ-xg1"/>
+                        <outlet property="CruiseControlButton" destination="tUe-JL-uIF" id="EPE-U7-qAd"/>
+                        <outlet property="CruiseControlIcon" destination="SYt-V4-mlk" id="hhI-bJ-WOt"/>
+                        <outlet property="CruiseControlSwitch" destination="wM0-2z-brg" id="Z45-iq-0ft"/>
                         <outlet property="Gesture" destination="Dtq-Dq-LNJ" id="360-UM-PSD"/>
                         <outlet property="GestureView" destination="x5g-9F-yok" id="VPV-U0-4Rz"/>
                         <outlet property="RPM1Bar" destination="4ji-MW-77l" id="eV2-Pv-IEa"/>
@@ -711,6 +751,7 @@
                         <outlet property="RPM2Label" destination="Wbh-RY-W0A" id="g77-qZ-VEr"/>
                         <outlet property="SpeedBar" destination="AmV-sJ-sH2" id="rPl-MC-uhl"/>
                         <outlet property="SpeedLabel" destination="Amt-0G-jTK" id="v76-lx-oti"/>
+                        <outlet property="SpeedLabelInfo" destination="b50-ar-IYy" id="Nch-T6-jZp"/>
                         <outlet property="StateIcon" destination="YPv-PW-Nz4" id="DLr-Xh-Chn"/>
                         <outlet property="ThrottleBar" destination="pvf-gq-m1g" id="JII-vM-Zea"/>
                         <outlet property="ThrottleLabel" destination="Ney-pe-B9B" id="eG2-2X-fiZ"/>
@@ -722,6 +763,7 @@
                         <action selector="panGestureRecognizedWithSender:" destination="5Xk-cN-hha" id="Bch-Hv-YFl"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="RbC-Bd-9Nz"/>
             </objects>
             <point key="canvasLocation" x="3725.5999999999999" y="35.532233883058474"/>
         </scene>
@@ -847,7 +889,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1sH-YU-ztf">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sH-YU-ztf">
                                 <rect key="frame" x="16" y="482" width="343" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -857,7 +899,7 @@ Cg
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="QQe-Fw-uxV">
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="QQe-Fw-uxV">
                                 <rect key="frame" x="137" y="572" width="100" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="pageIndicatorTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -904,7 +946,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgm-XJ-PNJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3176.8000000000002" y="774.96251874062978"/>
+            <point key="canvasLocation" x="3278" y="769"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XDw-Xu-Wbk">
@@ -1231,12 +1273,13 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="90X-Ja-DRK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2488.8000000000002" y="774.96251874062978"/>
+            <point key="canvasLocation" x="2414" y="769"/>
         </scene>
     </scenes>
     <resources>
         <image name="Back" width="100" height="100"/>
         <image name="BatteryEmpty" width="1124" height="632"/>
+        <image name="CruiseControlOFF" width="100" height="100"/>
         <image name="Down" width="100" height="100"/>
         <image name="Edit" width="100" height="100"/>
         <image name="Forward" width="100" height="100"/>
@@ -1249,7 +1292,7 @@ Cg
         <image name="Rectangle" width="100" height="100"/>
         <image name="Searching" width="100" height="100"/>
         <image name="Settings" width="100" height="100"/>
-        <image name="Stop" width="25" height="25"/>
+        <image name="Stop" width="100" height="100"/>
         <image name="Tools" width="575" height="270"/>
     </resources>
 </document>

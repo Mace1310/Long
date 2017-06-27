@@ -33,6 +33,7 @@ class ModeController: UIViewController, TransmissionsDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         TransmissionsManager.delegate = self
+        selectedButton = NormalButton
         TransmissionsManager.requestModeCode()
         updateInfo()
         UpdateTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.updateValues), userInfo: nil, repeats: true);
@@ -69,6 +70,7 @@ class ModeController: UIViewController, TransmissionsDelegate {
         }
         selectedButton.setBackgroundImage(#imageLiteral(resourceName: "RectangleGreen"), for: .normal)
         setModeCode = args
+        updateInfo()
     }
     
     @IBAction func normalButtonSelected(sender: UIButton) {
@@ -114,35 +116,49 @@ class ModeController: UIViewController, TransmissionsDelegate {
         case 0x00:
             let Description = "Questa modalità è consigliata per l'utilizzo di tutti i giorni, è il giusto compromesso tra consumi, velocità e durata."
             changeInfo(#imageLiteral(resourceName: "Skateboard"), "NORMAL MODE", Description, 0)
-            if selectedButton == NormalButton { SetModeButton.isEnabled = false }
-            else { SetModeButton.isEnabled = true }
+            if selectedButton == NormalButton { disableSetButton() }
+            else { enableSetButton() }
             break
         case 0x01:
             let Description = "Questa modalità è particolarmente indicata per tutti coloro che utilizzano il longboard elettrico per la prima volta. L'accelerazione e la velocità massima sono ridotte."
             changeInfo(#imageLiteral(resourceName: "Star"), "BEGINNER MODE", Description, 1)
-            if selectedButton == BeginnerButton { SetModeButton.isEnabled = false }
-            else { SetModeButton.isEnabled = true }
+            if selectedButton == BeginnerButton { disableSetButton() }
+            else { enableSetButton() }
             break
         case 0x02:
             let Description = "Modalità consigliata ai soli utenti esperti. Tramite questa opzione infatti verrà rilasciata tutta la potenza del longboard, togliendo ogni limite sulla velocità e sulla accelerazione."
             changeInfo(#imageLiteral(resourceName: "Speed"), "SPORT MODE", Description, 2)
-            if selectedButton == SportButton { SetModeButton.isEnabled = false }
-            else { SetModeButton.isEnabled = true }
+            if selectedButton == SportButton { disableSetButton() }
+            else { enableSetButton() }
             break
         case 0x03:
             let Description = "Tramite questa modalità è possibile viaggiare lunghe distanze con il minimo consumo di batteria. Tutti i sensori e moduli supplementari vengono disabilitati per ridurre al massimo i consumi."
             changeInfo(#imageLiteral(resourceName: "Leaf"), "ECO MODE", Description, 3)
-            if selectedButton == EcoButton { SetModeButton.isEnabled = false }
-            else { SetModeButton.isEnabled = true }
+            if selectedButton == EcoButton { disableSetButton() }
+            else { enableSetButton() }
             break
         case 0x04:
             let Description = "Questa modalità è ancora in fase di beta-testing, per questo alcune funzionalità potrebbero dare problemi o non funzionare. Il concetto della AUTO MODE è quello di poter utilizzare il longboard senza l'utilizzo di controller o smartphone."
             changeInfo(#imageLiteral(resourceName: "Automatic"), "AUTO MODE", Description, 4)
-            if selectedButton == AutoButton { SetModeButton.isEnabled = false }
-            else { SetModeButton.isEnabled = true }
+            if selectedButton == AutoButton { disableSetButton() }
+            else { enableSetButton() }
             break
         default:
             break
+        }
+    }
+    
+    func disableSetButton() {
+        SetModeButton.isEnabled = false
+        UIView.animate(withDuration: 0.5) { 
+            self.SetModeButton.alpha = 0.5
+        }
+    }
+    
+    func enableSetButton() {
+        SetModeButton.isEnabled = true
+        UIView.animate(withDuration: 0.5) {
+            self.SetModeButton.alpha = 1
         }
     }
     

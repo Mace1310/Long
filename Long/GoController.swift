@@ -19,9 +19,13 @@ class GoController: UIViewController, TransmissionsDelegate {
     @IBOutlet weak var RPM2Bar: KDCircularProgress!
     @IBOutlet weak var RPM2Label: UILabel!
     @IBOutlet weak var SpeedLabel: UILabel!
+    @IBOutlet weak var SpeedLabelInfo: UILabel!
     @IBOutlet weak var SpeedBar: KDCircularProgress!
     @IBOutlet weak var ConfirmLabel: UILabel!
     @IBOutlet weak var StateIcon: UIImageView!
+    @IBOutlet weak var CruiseControlIcon: UIImageView!
+    @IBOutlet weak var CruiseControlButton: UIButton!
+    @IBOutlet weak var CruiseControlSwitch: UISwitch!
     
     var StartPoint = CGPoint.zero
     var OldDeltaPosition: CGFloat = 0
@@ -48,11 +52,11 @@ class GoController: UIViewController, TransmissionsDelegate {
             TransmissionsManager.requestRPM()
             updateStateIcon();
         }
-        else {
+        else {/*    TOGLIERE COMMENTO
             UpdateTimer.invalidate()
             UpdateTimer = nil
             self.navigationController!.popViewController(animated: true)
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)*/
         }
     }
     
@@ -156,6 +160,45 @@ class GoController: UIViewController, TransmissionsDelegate {
             DecellerateTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(self.decellerate), userInfo: nil, repeats: true);
         }
 
+    }
+    
+    @IBAction func CruiseControlButtonPressed(sender: UIButton) {
+        if CruiseControlSwitch.isOn {
+            CruiseControlSwitch.setOn(false, animated: true)
+            disableCruiseControl()
+        }
+        else {
+            CruiseControlSwitch.setOn(true, animated: true)
+            enableCruiseControl()
+        }
+    }
+    
+    @IBAction func CruiseControlSwitchPressed(sender: UISwitch) {
+        if CruiseControlSwitch.isOn {
+            enableCruiseControl()
+        }
+        else {
+            disableCruiseControl()
+        }
+
+    }
+    
+    func enableCruiseControl() {
+        CruiseControlButton.setTitleColor(UIColor(red:0.15, green:0.68, blue:0.38, alpha:1.0), for: .normal)
+        CruiseControlIcon.image = #imageLiteral(resourceName: "CruiseControlON")
+        SpeedLabel.textColor = UIColor(red:0.15, green:0.68, blue:0.38, alpha:1.0)
+        SpeedLabelInfo.textColor = UIColor(red:0.15, green:0.68, blue:0.38, alpha:1.0)
+        SpeedBar.progressColors = [UIColor(red:0.15, green:0.68, blue:0.38, alpha:1.0)]
+        SpeedBar.angle = 270
+    }
+    
+    func disableCruiseControl() {
+        CruiseControlButton.setTitleColor(.black, for: .normal)
+        CruiseControlIcon.image = #imageLiteral(resourceName: "CruiseControlOFF")
+        SpeedLabel.textColor = UIColor.black
+        SpeedLabelInfo.textColor = UIColor.black
+        SpeedBar.progressColors = [UIColor.black]
+        SpeedBar.angle = 270
     }
     
     func decellerate() {
