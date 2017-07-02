@@ -18,7 +18,9 @@ protocol TransmissionsDelegate: class {
     
     func boardNameResponseRecieved(_ BoardName: String)
     
-    func systemStatusResponseRecieved(_ args: UInt8)
+    func systemStatusResponseRecieved(_ SystemStatus: UInt8)
     
-    func modeCodeResponseRecieved(_ args: UInt8)
+    func modeCodeResponseRecieved(_ ModeCode: UInt8)
+    
+    func currentResponseRecieved(_ Current1: Float32, _ Current2: Float32)
 }

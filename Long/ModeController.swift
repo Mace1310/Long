@@ -24,16 +24,14 @@ class ModeController: UIViewController, TransmissionsDelegate {
     @IBOutlet weak var InfoPageIndicator: UIPageControl!
     @IBOutlet weak var SetModeButton: UIButton!
     
-    var selectedButton: UIButton!
+    var selectedButton = UIButton()
     var selectedModeCode: UInt8 = 0x00
-    var setModeCode: UInt8!
     
     var UpdateTimer: Timer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         TransmissionsManager.delegate = self
-        selectedButton = NormalButton
         TransmissionsManager.requestModeCode()
         updateInfo()
         UpdateTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.updateValues), userInfo: nil, repeats: true);
@@ -41,15 +39,14 @@ class ModeController: UIViewController, TransmissionsDelegate {
     
     func RPMResponseReceived(_ RPM1: UInt16, _ RPM2: UInt16) {}
     func boardNameResponseRecieved(_ BoardName: String) {}
-    func systemStatusResponseRecieved(_ args: UInt8) {}
+    func systemStatusResponseRecieved(_ SystemStatus: UInt8) {}
     func cellVoltagesResponseRecieved(_ Battery1: Transmissions.LipoBattery, _ Battery2: Transmissions.LipoBattery) {}
     func batteryPercentageResponseRecieved(_ BatteryPercentage: UInt8) {}
+    func currentResponseRecieved(_ Current1: Float32, _ Current2: Float32) {}
     
-    func modeCodeResponseRecieved(_ args: UInt8) {
-        if selectedButton != nil {
-            selectedButton.setBackgroundImage(#imageLiteral(resourceName: "Rectangle"), for: .normal)
-        }
-        switch args {
+    func modeCodeResponseRecieved(_ ModeCode: UInt8) {
+        selectedButton.setBackgroundImage(#imageLiteral(resourceName: "Rectangle"), for: .normal)
+        switch ModeCode {
         case 0x00:
             selectedButton = NormalButton
             break
@@ -69,8 +66,7 @@ class ModeController: UIViewController, TransmissionsDelegate {
             break
         }
         selectedButton.setBackgroundImage(#imageLiteral(resourceName: "RectangleGreen"), for: .normal)
-        setModeCode = args
-        updateInfo()
+        
     }
     
     @IBAction func normalButtonSelected(sender: UIButton) {
@@ -100,6 +96,7 @@ class ModeController: UIViewController, TransmissionsDelegate {
     
     @IBAction func setModeTouch(sender: UIButton) {
         TransmissionsManager.setModeCode(selectedModeCode)
+        disableSetButton()
     }
     
     func updateValues() {
@@ -111,35 +108,49 @@ class ModeController: UIViewController, TransmissionsDelegate {
         }
     }
     
+    func setSelectedButtonGrey(_ button: UIButton) {
+        if NormalButton != selectedButton { NormalButton.setBackgroundImage(#imageLiteral(resourceName: "Rectangle"), for: .normal) }
+        if BeginnerButton != selectedButton { BeginnerButton.setBackgroundImage(#imageLiteral(resourceName: "Rectangle"), for: .normal) }
+        if SportButton != selectedButton { SportButton.setBackgroundImage(#imageLiteral(resourceName: "Rectangle"), for: .normal) }
+        if EcoButton != selectedButton { EcoButton.setBackgroundImage(#imageLiteral(resourceName: "Rectangle"), for: .normal) }
+        if AutoButton != selectedButton { AutoButton.setBackgroundImage(#imageLiteral(resourceName: "Rectangle"), for: .normal) }
+        if button != selectedButton { button.setBackgroundImage(#imageLiteral(resourceName: "RectangleGrey"), for: .normal) }
+    }
+    
     func updateInfo() {
         switch selectedModeCode {
         case 0x00:
             let Description = "Questa modalità è consigliata per l'utilizzo di tutti i giorni, è il giusto compromesso tra consumi, velocità e durata."
             changeInfo(#imageLiteral(resourceName: "Skateboard"), "NORMAL MODE", Description, 0)
+            setSelectedButtonGrey(NormalButton)
             if selectedButton == NormalButton { disableSetButton() }
             else { enableSetButton() }
             break
         case 0x01:
             let Description = "Questa modalità è particolarmente indicata per tutti coloro che utilizzano il longboard elettrico per la prima volta. L'accelerazione e la velocità massima sono ridotte."
             changeInfo(#imageLiteral(resourceName: "Star"), "BEGINNER MODE", Description, 1)
+            setSelectedButtonGrey(BeginnerButton)
             if selectedButton == BeginnerButton { disableSetButton() }
             else { enableSetButton() }
             break
         case 0x02:
             let Description = "Modalità consigliata ai soli utenti esperti. Tramite questa opzione infatti verrà rilasciata tutta la potenza del longboard, togliendo ogni limite sulla velocità e sulla accelerazione."
             changeInfo(#imageLiteral(resourceName: "Speed"), "SPORT MODE", Description, 2)
+            setSelectedButtonGrey(SportButton)
             if selectedButton == SportButton { disableSetButton() }
             else { enableSetButton() }
             break
         case 0x03:
             let Description = "Tramite questa modalità è possibile viaggiare lunghe distanze con il minimo consumo di batteria. Tutti i sensori e moduli supplementari vengono disabilitati per ridurre al massimo i consumi."
             changeInfo(#imageLiteral(resourceName: "Leaf"), "ECO MODE", Description, 3)
+            setSelectedButtonGrey(EcoButton)
             if selectedButton == EcoButton { disableSetButton() }
             else { enableSetButton() }
             break
         case 0x04:
             let Description = "Questa modalità è ancora in fase di beta-testing, per questo alcune funzionalità potrebbero dare problemi o non funzionare. Il concetto della AUTO MODE è quello di poter utilizzare il longboard senza l'utilizzo di controller o smartphone."
             changeInfo(#imageLiteral(resourceName: "Automatic"), "AUTO MODE", Description, 4)
+            setSelectedButtonGrey(AutoButton)
             if selectedButton == AutoButton { disableSetButton() }
             else { enableSetButton() }
             break
@@ -150,6 +161,7 @@ class ModeController: UIViewController, TransmissionsDelegate {
     
     func disableSetButton() {
         SetModeButton.isEnabled = false
+        SetModeButton.setTitleColor(UIColor(red:0.40, green:0.40, blue:0.40, alpha:1.0), for: .normal)
         UIView.animate(withDuration: 0.5) { 
             self.SetModeButton.alpha = 0.5
         }
@@ -157,6 +169,7 @@ class ModeController: UIViewController, TransmissionsDelegate {
     
     func enableSetButton() {
         SetModeButton.isEnabled = true
+        SetModeButton.setTitleColor(UIColor(red:0.15, green:0.68, blue:0.38, alpha:1.0), for: .normal)
         UIView.animate(withDuration: 0.5) {
             self.SetModeButton.alpha = 1
         }

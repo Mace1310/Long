@@ -14,6 +14,7 @@ class GoController: UIViewController, TransmissionsDelegate {
     @IBOutlet weak var Gesture: UIGestureRecognizer!
     @IBOutlet weak var ThrottleBar: KDCircularProgress!
     @IBOutlet weak var ThrottleLabel: UILabel!
+    @IBOutlet weak var ThrottleLabelInfo: UILabel!
     @IBOutlet weak var RPM1Bar: KDCircularProgress!
     @IBOutlet weak var RPM1Label: UILabel!
     @IBOutlet weak var RPM2Bar: KDCircularProgress!
@@ -26,6 +27,12 @@ class GoController: UIViewController, TransmissionsDelegate {
     @IBOutlet weak var CruiseControlIcon: UIImageView!
     @IBOutlet weak var CruiseControlButton: UIButton!
     @IBOutlet weak var CruiseControlSwitch: UISwitch!
+    @IBOutlet weak var Current1Label: UILabel!
+    @IBOutlet weak var Current2Label: UILabel!
+    @IBOutlet weak var CurrentBar: UIProgressView!
+    @IBOutlet weak var AutonomyLabel: UILabel!
+    @IBOutlet weak var BatteryPercentageLabel: UILabel!
+    @IBOutlet weak var BatteryPercentageIcon: UIImageView!
     
     var StartPoint = CGPoint.zero
     var OldDeltaPosition: CGFloat = 0
@@ -40,6 +47,8 @@ class GoController: UIViewController, TransmissionsDelegate {
     
     let BluetoothManager = Bluetooth.CB
     let TransmissionsManager = Transmissions.T
+    
+    var Battery_Percentage = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +59,10 @@ class GoController: UIViewController, TransmissionsDelegate {
     func updateValues() {
         if BluetoothManager.isConnected {
             TransmissionsManager.requestRPM()
-            updateStateIcon();
+            TransmissionsManager.requestCurrent()
+            TransmissionsManager.requestBatteryPercentage()
+            TransmissionsManager.requestModeCode()
+            updateStateIcon()
         }
         else {/*    TOGLIERE COMMENTO
             UpdateTimer.invalidate()
@@ -76,11 +88,91 @@ class GoController: UIViewController, TransmissionsDelegate {
         }
     }
     
-    func batteryPercentageResponseRecieved(_ BatteryPercentage: UInt8) {}
     func cellVoltagesResponseRecieved(_ Battery1: Transmissions.LipoBattery, _ Battery2: Transmissions.LipoBattery) {}
     func boardNameResponseRecieved(_ BoardName: String) {}
-    func systemStatusResponseRecieved(_ args: UInt8) {}
-    func modeCodeResponseRecieved(_ args: UInt8) {}
+    func systemStatusResponseRecieved(_ SystemStatus: UInt8) {}
+    
+    func modeCodeResponseRecieved(_ ModeCode: UInt8) {
+        switch ModeCode {
+        case 0x00:
+            ModeSelectedButton.setTitle("NORM", for: .normal)
+            break
+        case 0x01:
+            ModeSelectedButton.setTitle("BEG", for: .normal)
+            break
+        case 0x02:
+            ModeSelectedButton.setTitle("SPORT", for: .normal)
+            break
+        case 0x03:
+            ModeSelectedButton.setTitle("ECO", for: .normal)
+            break
+        case 0x04:
+            ModeSelectedButton.setTitle("AUTO", for: .normal)
+            break
+        case 0x05:
+            ModeSelectedButton.setTitle("PROG", for: .normal)
+            break
+        default:
+            break
+        }
+    }
+    
+    func batteryPercentageResponseRecieved(_ BatteryPercentage: UInt8) {
+        Battery_Percentage = Int(BatteryPercentage)
+        if Battery_Percentage == 101 {
+            BatteryPercentageLabel.text = "ERROR"
+            BatteryPercentageIcon.image = #imageLiteral(resourceName: "BatteryError")
+        }
+        else {
+            BatteryPercentageLabel.text = "\(Battery_Percentage)%"
+            if Battery_Percentage <= 10 {
+                BatteryPercentageIcon.image = #imageLiteral(resourceName: "Battery0%")
+            }
+            else if Battery_Percentage > 10 && Battery_Percentage <= 25 {
+                BatteryPercentageIcon.image = #imageLiteral(resourceName: "Battery25%")
+            }
+            else if Battery_Percentage > 25 && Battery_Percentage <= 50 {
+                BatteryPercentageIcon.image = #imageLiteral(resourceName: "Battery50%")
+            }
+            else if Battery_Percentage > 50 && Battery_Percentage <= 75 {
+                BatteryPercentageIcon.image = #imageLiteral(resourceName: "Battery75%")
+            }
+            else if Battery_Percentage > 75 && Battery_Percentage <= 100 {
+                BatteryPercentageIcon.image = #imageLiteral(resourceName: "Battery100%")
+            }
+        }
+    }
+    
+    func currentResponseRecieved(_ Current1: Float32, _ Current2: Float32) {
+        let Current1_INT = Int(Current1)
+        let Current2_INT = Int(Current2)
+        Current1Label.text = String("\(Current1_INT) A")
+        Current2Label.text = String("\(Current2_INT) A")
+        let Current_SUM = Current1_INT + Current2_INT
+        if Current_SUM < 50 {
+            CurrentBar.progressTintColor = UIColor(red:0.15, green:0.68, blue:0.38, alpha:1.0)
+        }
+        else if Current_SUM > 50 && Current_SUM < 100 {
+            CurrentBar.progressTintColor = UIColor(red:0.83, green:0.33, blue:0.00, alpha:1.0)
+        }
+        else {
+            CurrentBar.progressTintColor = UIColor(red:0.75, green:0.22, blue:0.17, alpha:1.0)
+        }
+        CurrentBar.setProgress(Float(Current_SUM / 150), animated: true)
+        if Current_SUM <= 1 { AutonomyLabel.text = "∞" }
+        else {
+            if Battery_Percentage != 101 {
+                let RemainingCapacity = (Battery_Percentage * 10) / 100
+                let Autonomy = Int((Current_SUM * 60) / RemainingCapacity)
+                let AutonomyHours = Int(Autonomy / 60)
+                let AutonomyMinutes = Int(Autonomy % 60)
+                AutonomyLabel.text = "\(AutonomyHours) h \(AutonomyMinutes) min"
+            }
+            else {
+                AutonomyLabel.text = "- h - min"
+            }
+        }
+    }
     
     func RPMResponseReceived(_ RPM1: UInt16, _ RPM2: UInt16) {
         RPM1Label.text = String(RPM1)
@@ -110,6 +202,16 @@ class GoController: UIViewController, TransmissionsDelegate {
     
     @IBAction func emergencyStopPressed(sender: UIButton) {
         TransmissionsManager.emergencyStop()
+        if DecellerateTimer != nil {
+            DecellerateTimer.invalidate()
+            DecellerateTimer = nil
+        }
+        ThrottleLabel.textColor = UIColor(red:0.75, green:0.22, blue:0.17, alpha:1.0)
+        ThrottleLabel.text = "STOP"
+        ThrottleBar.progressColors = [UIColor(red:0.75, green:0.22, blue:0.17, alpha:1.0)]
+        ThrottleBar.animate(toAngle: 270, duration: 1, completion: nil)
+        ThrottleLabelInfo.textColor = UIColor(red:0.75, green:0.22, blue:0.17, alpha:1.0)
+        ThrottleValue = 0
     }
     
     func cancelConfirmLabel() {
@@ -124,6 +226,9 @@ class GoController: UIViewController, TransmissionsDelegate {
             drawStartCircle(c: Gesture.location(in: GestureView), r: 40)
             drawEndCircle(c: Gesture.location(in: GestureView), r: 20)
             StartPoint = Gesture.location(in: GestureView)
+            ThrottleLabel.textColor = UIColor.black
+            ThrottleLabelInfo.textColor = UIColor.black
+            ThrottleBar.progressColors = [UIColor.black]
             if DecellerateTimer != nil {
                 DecellerateTimer.invalidate()
                 DecellerateTimer = nil

@@ -246,7 +246,10 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             }
             break
         case 0x13:
-            
+            if rxCounter == 9 {
+                let args = rxBuffer[1...8]
+                TransmissionsManager.currentResponse(Array(args))
+            }
             break
         case 0x14:
             let args = rxBuffer[1...rxCounter - 1]

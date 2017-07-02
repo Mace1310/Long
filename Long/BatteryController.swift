@@ -67,11 +67,12 @@ class BatteryController: UIViewController, TransmissionsDelegate {
     
     func RPMResponseReceived(_ RPM1: UInt16, _ RPM2: UInt16) {}
     func boardNameResponseRecieved(_ BoardName: String) {}
-    func systemStatusResponseRecieved(_ args: UInt8) {}
+    func systemStatusResponseRecieved(_ SystemStatus: UInt8) {}
+    func currentResponseRecieved(_ Current1: Float32, _ Current2: Float32) {}
     
     
-    func modeCodeResponseRecieved(_ args: UInt8) {
-        if args == 0x03 {
+    func modeCodeResponseRecieved(_ ModeCode: UInt8) {
+        if ModeCode == 0x03 {
             if ECOSwitch.isOn == false {
                 ECOSwitch.setOn(true, animated: true)
             }

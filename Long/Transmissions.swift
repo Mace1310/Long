@@ -27,6 +27,20 @@ class Transmissions: NSObject {
     
     private override init() { }
     
+    func currentResponse(_ args: [UInt8]) {
+        let Current1_CHAR = [args[0], args[1], args[2], args[3]]
+        let Current2_CHAR = [args[4], args[5], args[6], args[7]]
+        let Current1: Float32! = UnsafePointer(Current1_CHAR).withMemoryRebound(to: Float32.self, capacity: 1) { $0.pointee }
+        let Current2: Float32! = UnsafePointer(Current2_CHAR).withMemoryRebound(to: Float32.self, capacity: 1) { $0.pointee }
+        delegate?.currentResponseRecieved(-Current1, Current2)
+    }
+    
+    func requestCurrent() {
+        BluetoothManager.txBuffer[0] = 0x13
+        BluetoothManager.txLength = 1
+        BluetoothManager.flushTxBuffer()
+    }
+    
     func emergencyStop() {
         BluetoothManager.txBuffer[0] = 0x03
         BluetoothManager.txLength = 1

@@ -58,9 +58,10 @@ class LongController: UIViewController, UITextFieldDelegate, BluetoothDelegate, 
     
     func RPMResponseReceived(_ RPM1: UInt16, _ RPM2: UInt16) {}
     func cellVoltagesResponseRecieved(_ Battery1: Transmissions.LipoBattery, _ Battery2: Transmissions.LipoBattery) {}
+    func currentResponseRecieved(_ Current1: Float32, _ Current2: Float32) {}
 
-    func modeCodeResponseRecieved(_ args: UInt8) {
-        switch args {
+    func modeCodeResponseRecieved(_ ModeCode: UInt8) {
+        switch ModeCode {
         case 0x00:
             ModeSelectedButton.setTitle("NORM", for: .normal)
             break
@@ -84,8 +85,8 @@ class LongController: UIViewController, UITextFieldDelegate, BluetoothDelegate, 
         }
     }
     
-    func systemStatusResponseRecieved(_ args: UInt8) {
-        switch args {
+    func systemStatusResponseRecieved(_ SystemStatus: UInt8) {
+        switch SystemStatus {
         case 0x00:
             SystemStatusLabel.text = "READY TO GO"
             break
@@ -108,7 +109,7 @@ class LongController: UIViewController, UITextFieldDelegate, BluetoothDelegate, 
     func batteryPercentageResponseRecieved(_ BatteryPercentage: UInt8) {
         if BatteryPercentage == 101 {
             BatteryPercentageButton.setTitle("ERROR", for: .normal)
-            BatteryProgressBar.animate(toAngle: 0, duration: 1, completion: nil)
+            BatteryProgressBar.animate(toAngle: 0, duration: 0.5, completion: nil)
         }
         else {
             BatteryPercentageButton.setTitle("\(BatteryPercentage) %", for: .normal)
