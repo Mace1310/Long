@@ -22,6 +22,7 @@
 		F46BDECC1E7BB0CE00801853 /* GoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46BDECB1E7BB0CE00801853 /* GoController.swift */; };
 		F47902FC1E7F5EBF00AEE604 /* OptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47902FB1E7F5EBF00AEE604 /* OptionsController.swift */; };
 		F48786741EE7014F00E527B4 /* BatteryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48786731EE7014F00E527B4 /* BatteryController.swift */; };
+		F4BEC5D41F0A885C0005BECC /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BEC5D31F0A885C0005BECC /* SettingsController.swift */; };
 		F4F450881EBC2CF200D6B515 /* Transmissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F450871EBC2CF200D6B515 /* Transmissions.swift */; };
 		F4F4508D1EBC315900D6B515 /* TransmissionsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F4508C1EBC315900D6B515 /* TransmissionsDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		F46BDECB1E7BB0CE00801853 /* GoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoController.swift; sourceTree = "<group>"; };
 		F47902FB1E7F5EBF00AEE604 /* OptionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsController.swift; sourceTree = "<group>"; };
 		F48786731EE7014F00E527B4 /* BatteryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryController.swift; sourceTree = "<group>"; };
+		F4BEC5D31F0A885C0005BECC /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		F4F450871EBC2CF200D6B515 /* Transmissions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transmissions.swift; sourceTree = "<group>"; };
 		F4F4508C1EBC315900D6B515 /* TransmissionsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmissionsDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +121,7 @@
 				F46BDECB1E7BB0CE00801853 /* GoController.swift */,
 				F47902FB1E7F5EBF00AEE604 /* OptionsController.swift */,
 				F462932A1E7E46A50013537E /* InfoController.swift */,
+				F4BEC5D31F0A885C0005BECC /* SettingsController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				F46800241EA9A0AB00A6908D /* LongController.swift in Sources */,
 				F46BDECC1E7BB0CE00801853 /* GoController.swift in Sources */,
 				F4F4508D1EBC315900D6B515 /* TransmissionsDelegate.swift in Sources */,
+				F4BEC5D41F0A885C0005BECC /* SettingsController.swift in Sources */,
 				F48786741EE7014F00E527B4 /* BatteryController.swift in Sources */,
 				F420CC551E7BA27E00448B6B /* LongControllerOLD.swift in Sources */,
 				F420CC531E7BA27E00448B6B /* AppDelegate.swift in Sources */,
