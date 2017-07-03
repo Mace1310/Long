@@ -517,7 +517,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                                <real key="value" value="270"/>
+                                                <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                                                 <real key="value" value="135"/>
@@ -561,7 +561,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                                <real key="value" value="270"/>
+                                                <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                                                 <real key="value" value="135"/>
@@ -605,7 +605,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                                <real key="value" value="270"/>
+                                                <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                                                 <real key="value" value="135"/>
@@ -649,7 +649,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                                <real key="value" value="270"/>
+                                                <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                                                 <real key="value" value="135"/>
@@ -860,15 +860,8 @@ LOAD</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AUTONOMY: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIb-Io-RTH">
-                                        <rect key="frame" x="76" y="338" width="190" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="∞" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTQ-Qv-fRV">
-                                        <rect key="frame" x="269" y="338" width="81" height="21"/>
+                                        <rect key="frame" x="228" y="338" width="122" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
@@ -878,21 +871,28 @@ LOAD</string>
                                         <rect key="frame" x="337" y="2" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBu-ZI-cFn">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBu-ZI-cFn">
                                         <rect key="frame" x="235" y="7" width="100" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Skateboard" translatesAutoresizingMaskIntoConstraints="NO" id="b9C-4M-Tvn">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b9C-4M-Tvn">
                                         <rect key="frame" x="39" y="5" width="25" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NORMAL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGe-jW-QyC">
-                                        <rect key="frame" x="68" y="7" width="71" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGe-jW-QyC">
+                                        <rect key="frame" x="68" y="7" width="131" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AUTONOMY: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIb-Io-RTH">
+                                        <rect key="frame" x="38" y="338" width="190" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -928,6 +928,8 @@ LOAD</string>
                         <outlet property="CurrentBar" destination="bdX-ho-bFy" id="nTe-ZB-ATA"/>
                         <outlet property="Gesture" destination="Dtq-Dq-LNJ" id="360-UM-PSD"/>
                         <outlet property="GestureView" destination="x5g-9F-yok" id="VPV-U0-4Rz"/>
+                        <outlet property="ModeIcon" destination="b9C-4M-Tvn" id="ygs-43-C4h"/>
+                        <outlet property="ModeLabel" destination="YGe-jW-QyC" id="vDg-DU-CjX"/>
                         <outlet property="RPM1Bar" destination="4ji-MW-77l" id="eV2-Pv-IEa"/>
                         <outlet property="RPM1Label" destination="LmP-IR-A0U" id="ucp-o1-ukn"/>
                         <outlet property="RPM2Bar" destination="Xj9-ul-XGg" id="Bgj-rD-6WG"/>
@@ -947,7 +949,11 @@ LOAD</string>
                         <action selector="panGestureRecognizedWithSender:" destination="5Xk-cN-hha" id="Bch-Hv-YFl"/>
                     </connections>
                 </panGestureRecognizer>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="RbC-Bd-9Nz"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="RbC-Bd-9Nz">
+                    <connections>
+                        <action selector="DoubleTapRecognizedWithSender:" destination="5Xk-cN-hha" id="Ccw-5b-1oA"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3725.5999999999999" y="35.532233883058474"/>
         </scene>
@@ -1478,7 +1484,6 @@ Cg
         <image name="Rectangle" width="100" height="100"/>
         <image name="Searching" width="100" height="100"/>
         <image name="Settings" width="100" height="100"/>
-        <image name="Skateboard" width="100" height="100"/>
         <image name="Stop" width="100" height="100"/>
         <image name="Tools" width="575" height="270"/>
     </resources>

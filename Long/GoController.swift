@@ -33,6 +33,8 @@ class GoController: UIViewController, TransmissionsDelegate {
     @IBOutlet weak var AutonomyLabel: UILabel!
     @IBOutlet weak var BatteryPercentageLabel: UILabel!
     @IBOutlet weak var BatteryPercentageIcon: UIImageView!
+    @IBOutlet weak var ModeLabel: UILabel!
+    @IBOutlet weak var ModeIcon: UIImageView!
     
     var StartPoint = CGPoint.zero
     var OldDeltaPosition: CGFloat = 0
@@ -64,11 +66,11 @@ class GoController: UIViewController, TransmissionsDelegate {
             TransmissionsManager.requestModeCode()
             updateStateIcon()
         }
-        else {/*    TOGLIERE COMMENTO
+        else {
             UpdateTimer.invalidate()
             UpdateTimer = nil
             self.navigationController!.popViewController(animated: true)
-            self.dismiss(animated: true, completion: nil)*/
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -95,22 +97,24 @@ class GoController: UIViewController, TransmissionsDelegate {
     func modeCodeResponseRecieved(_ ModeCode: UInt8) {
         switch ModeCode {
         case 0x00:
-            ModeSelectedButton.setTitle("NORM", for: .normal)
+            ModeLabel.text = "NORMAL"
+            ModeIcon.image = #imageLiteral(resourceName: "Skateboard")
             break
         case 0x01:
-            ModeSelectedButton.setTitle("BEG", for: .normal)
+            ModeLabel.text = "BEGINNER"
+            ModeIcon.image = #imageLiteral(resourceName: "Star")
             break
         case 0x02:
-            ModeSelectedButton.setTitle("SPORT", for: .normal)
+            ModeLabel.text = "SPORT"
+            ModeIcon.image = #imageLiteral(resourceName: "Speed")
             break
         case 0x03:
-            ModeSelectedButton.setTitle("ECO", for: .normal)
+            ModeLabel.text = "ECO"
+            ModeIcon.image = #imageLiteral(resourceName: "Leaf")
             break
         case 0x04:
-            ModeSelectedButton.setTitle("AUTO", for: .normal)
-            break
-        case 0x05:
-            ModeSelectedButton.setTitle("PROG", for: .normal)
+            ModeLabel.text = "AUTO"
+            ModeIcon.image = #imageLiteral(resourceName: "Automatic")
             break
         default:
             break
@@ -161,9 +165,9 @@ class GoController: UIViewController, TransmissionsDelegate {
         CurrentBar.setProgress(Float(Current_SUM / 150), animated: true)
         if Current_SUM <= 1 { AutonomyLabel.text = "∞" }
         else {
-            if Battery_Percentage != 101 {
+            if Battery_Percentage != 101  && Battery_Percentage != 0 {
                 let RemainingCapacity = (Battery_Percentage * 10) / 100
-                let Autonomy = Int((Current_SUM * 60) / RemainingCapacity)
+                let Autonomy = Int((RemainingCapacity * 60) / Current_SUM)
                 let AutonomyHours = Int(Autonomy / 60)
                 let AutonomyMinutes = Int(Autonomy % 60)
                 AutonomyLabel.text = "\(AutonomyHours) h \(AutonomyMinutes) min"
@@ -180,7 +184,7 @@ class GoController: UIViewController, TransmissionsDelegate {
         RPM1Bar.animate(toAngle: (Double(RPM1) * 270)/10000, duration: 1, completion: nil)
         RPM2Bar.animate(toAngle: (Double(RPM2) * 270)/10000, duration: 1, completion: nil)
         let AverageRPM = Double(RPM1 + RPM2) / 2
-        let Speed = AverageRPM * 0.0132
+        let Speed = ((AverageRPM / 2.13) * 0.035 * 0.10472) * 3.6
         SpeedLabel.text = String("\(Int(Speed)) Km/h")
         SpeedBar.animate(toAngle: Speed * 2.7, duration: 1, completion: nil)
     }
@@ -229,6 +233,8 @@ class GoController: UIViewController, TransmissionsDelegate {
             ThrottleLabel.textColor = UIColor.black
             ThrottleLabelInfo.textColor = UIColor.black
             ThrottleBar.progressColors = [UIColor.black]
+            disableCruiseControl(false)
+            CruiseControlSwitch.setOn(false, animated: true)
             if DecellerateTimer != nil {
                 DecellerateTimer.invalidate()
                 DecellerateTimer = nil
@@ -267,10 +273,14 @@ class GoController: UIViewController, TransmissionsDelegate {
 
     }
     
+    @IBAction func DoubleTapRecognized(sender: UITapGestureRecognizer) {
+        CruiseControlButtonPressed(sender: CruiseControlButton)
+    }
+    
     @IBAction func CruiseControlButtonPressed(sender: UIButton) {
         if CruiseControlSwitch.isOn {
             CruiseControlSwitch.setOn(false, animated: true)
-            disableCruiseControl()
+            disableCruiseControl(true)
         }
         else {
             CruiseControlSwitch.setOn(true, animated: true)
@@ -283,7 +293,7 @@ class GoController: UIViewController, TransmissionsDelegate {
             enableCruiseControl()
         }
         else {
-            disableCruiseControl()
+            disableCruiseControl(true)
         }
 
     }
@@ -295,15 +305,24 @@ class GoController: UIViewController, TransmissionsDelegate {
         SpeedLabelInfo.textColor = UIColor(red:0.15, green:0.68, blue:0.38, alpha:1.0)
         SpeedBar.progressColors = [UIColor(red:0.15, green:0.68, blue:0.38, alpha:1.0)]
         SpeedBar.angle = 270
+        if DecellerateTimer != nil {
+            DecellerateTimer.invalidate()
+            DecellerateTimer = nil
+        }
+        ThrottleBar.angle = Double(ThrottleValue) * 0.2
     }
     
-    func disableCruiseControl() {
+    func disableCruiseControl(_ goToZero: Bool) {
         CruiseControlButton.setTitleColor(.black, for: .normal)
         CruiseControlIcon.image = #imageLiteral(resourceName: "CruiseControlOFF")
         SpeedLabel.textColor = UIColor.black
         SpeedLabelInfo.textColor = UIColor.black
         SpeedBar.progressColors = [UIColor.black]
         SpeedBar.angle = 270
+        if goToZero {
+            ThrottleBar.animate(toAngle: 0, duration: Double(ThrottleValue) * 0.2, completion: nil)
+            DecellerateTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(self.decellerate), userInfo: nil, repeats: true);
+        }
     }
     
     func decellerate() {
