@@ -231,7 +231,7 @@ class LongController: UIViewController, UITextFieldDelegate, BluetoothDelegate, 
         ModeSelectedButton.setTitle("....", for: .normal)
         GOButton.isEnabled = false 
         ForwardIcon.isHidden = true
-        SETTINGSButton.isEnabled = false
+        SETTINGSButton.isEnabled = true     //RIMETTERE FALSE
         SystemStatusLabel.text = "DISCONNECTED"
     }
     
