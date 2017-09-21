@@ -290,7 +290,7 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         isDiscovering = true
     }
     
-    func updateValues() {
+    @objc func updateValues() {
         if isConnected {
             Peripheral.readRSSI()
         }
@@ -321,7 +321,7 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
-        SignalStrength = Int(RSSI)
+        SignalStrength = Int(truncating: RSSI)
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {

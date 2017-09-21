@@ -99,7 +99,7 @@ class ModeController: UIViewController, TransmissionsDelegate {
         disableSetButton()
     }
     
-    func updateValues() {
+    @objc func updateValues() {
         TransmissionsManager.requestModeCode()
         if Bluetooth.CB.isConnected == false {
             UpdateTimer.invalidate()

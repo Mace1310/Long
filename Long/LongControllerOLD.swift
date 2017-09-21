@@ -165,14 +165,14 @@ class LongControllerOLD: UIViewController, UITextFieldDelegate, CBCentralManager
         }
     }
     
-    func updateValues() {
+    @objc func updateValues() {
         if ConnectedToPeripheral {
             Board.readRSSI()
         }
     }
     
     func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
-        let RSSIValue = Int(RSSI)
+        let RSSIValue = Int(truncating: RSSI)
         if RSSIValue >= -55 {
             setStateIcon(image: #imageLiteral(resourceName: "HighConnection"))
         }

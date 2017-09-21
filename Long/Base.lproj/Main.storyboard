@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UQH-12-2gG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UQH-12-2gG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,19 +29,7 @@
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Options" prompt=" " id="b2g-Ac-knW">
-                                        <barButtonItem key="rightBarButtonItem" id="UYF-nF-ens">
-                                            <button key="customView" opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1vx-ER-Paj" userLabel="Info">
-                                                <rect key="frame" x="334" y="39" width="25" height="25"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="Down"/>
-                                                <connections>
-                                                    <action selector="downPressed:" destination="kM7-a9-hko" eventType="touchUpInside" id="kIp-C4-5ot"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Options" prompt=" " id="b2g-Ac-knW"/>
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4aA-pb-6hu" userLabel="Line">
@@ -129,6 +117,15 @@
                                     <action selector="resetPressedWithSender:" destination="kM7-a9-hko" eventType="touchUpInside" id="HJV-wH-bCb"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUx-jp-B4k" userLabel="Info">
+                                <rect key="frame" x="328" y="45" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="Down"/>
+                                <connections>
+                                    <action selector="downPressed:" destination="kM7-a9-hko" eventType="touchUpInside" id="3vY-zR-X4R"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -162,19 +159,7 @@
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Info" prompt=" " id="yic-y4-RH1">
-                                        <barButtonItem key="rightBarButtonItem" id="MEh-6p-G6E">
-                                            <button key="customView" opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="G8k-50-IoS" userLabel="Info">
-                                                <rect key="frame" x="334" y="39" width="25" height="25"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="Down"/>
-                                                <connections>
-                                                    <action selector="downPressed:" destination="7k0-pM-aj4" eventType="touchUpInside" id="Yey-yV-h5W"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Info" prompt=" " id="yic-y4-RH1"/>
                                 </items>
                             </navigationBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLo-cX-sPt">
@@ -204,6 +189,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                             </imageView>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMG-cJ-XCh" userLabel="Info">
+                                <rect key="frame" x="328" y="45" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="Down"/>
+                                <connections>
+                                    <action selector="downPressed:" destination="7k0-pM-aj4" eventType="touchUpInside" id="614-wu-1E1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -297,30 +291,7 @@
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Long" prompt=" " id="J9Z-Xl-m0U">
-                                        <barButtonItem key="leftBarButtonItem" id="INm-Rr-Ya6">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hUp-He-cYs" userLabel="Info">
-                                                <rect key="frame" x="16" y="39" width="25" height="25"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="Info"/>
-                                                <connections>
-                                                    <segue destination="7k0-pM-aj4" kind="showDetail" id="SAu-Cj-WGt"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" id="GRp-Ow-lLh">
-                                            <button key="customView" opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="axJ-ue-YPZ" userLabel="Options">
-                                                <rect key="frame" x="334" y="39" width="25" height="25"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="Settings"/>
-                                                <connections>
-                                                    <segue destination="kM7-a9-hko" kind="showDetail" id="LJK-62-UTW"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Long" prompt=" " id="J9Z-Xl-m0U"/>
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kob-LB-FDG" userLabel="Battery Level" customClass="KDCircularProgress" customModule="Long" customModuleProvider="target">
@@ -437,6 +408,24 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9o-rY-b8w" userLabel="Info">
+                                <rect key="frame" x="16" y="45" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="Info"/>
+                                <connections>
+                                    <segue destination="7k0-pM-aj4" kind="showDetail" id="iqb-zX-GUy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1I-oo-3jN" userLabel="Options">
+                                <rect key="frame" x="334" y="45" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="Settings"/>
+                                <connections>
+                                    <segue destination="kM7-a9-hko" kind="showDetail" id="wDq-ky-PkY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -479,19 +468,7 @@
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Control" prompt=" " id="gpx-e5-BMn">
-                                        <barButtonItem key="leftBarButtonItem" id="gc8-85-WZE">
-                                            <button key="customView" opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gWK-ba-qYn" userLabel="Back">
-                                                <rect key="frame" x="16" y="39" width="25" height="25"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="Back"/>
-                                                <connections>
-                                                    <action selector="backPressedWithSender:" destination="5Xk-cN-hha" eventType="touchUpInside" id="7dI-eo-0Q6"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Control" prompt=" " id="gpx-e5-BMn"/>
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x5g-9F-yok">
@@ -914,6 +891,15 @@ LOAD</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGa-H9-0sH" userLabel="Back">
+                                <rect key="frame" x="16" y="37" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="Back"/>
+                                <connections>
+                                    <action selector="backPressedWithSender:" destination="5Xk-cN-hha" eventType="touchUpInside" id="k4C-xa-4TH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -980,20 +966,7 @@ LOAD</string>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Settings" prompt=" " id="ozi-RO-lGQ">
-                                        <barButtonItem key="leftBarButtonItem" id="bFg-3g-BMk">
-                                            <button key="customView" opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vod-gM-WYb" userLabel="Back">
-                                                <rect key="frame" x="16" y="39" width="25" height="25"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="Back"/>
-                                                <connections>
-                                                    <action selector="backPressed:" destination="6vf-NX-kLR" eventType="touchUpInside" id="n7R-Kc-KgD"/>
-                                                    <action selector="backPressedWithSender:" destination="5Xk-cN-hha" eventType="touchUpInside" id="iNC-Rx-AlT"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Settings" prompt=" " id="ozi-RO-lGQ"/>
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AUTOMATIC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="377-8D-x6T">
@@ -1207,6 +1180,16 @@ LOAD</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xYM-Ze-ZBj" userLabel="Back">
+                                <rect key="frame" x="16" y="44" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="Back"/>
+                                <connections>
+                                    <action selector="backPressed:" destination="6vf-NX-kLR" eventType="touchUpInside" id="efl-fx-gdb"/>
+                                    <action selector="backPressedWithSender:" destination="5Xk-cN-hha" eventType="touchUpInside" id="AZw-4s-RNY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.15294117647058825" green="0.68235294117647061" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
@@ -1239,20 +1222,7 @@ LOAD</string>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Mode" prompt=" " id="h06-0I-fiS">
-                                        <barButtonItem key="rightBarButtonItem" id="6Ar-gu-LNS">
-                                            <button key="customView" opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OeH-NP-bsV" userLabel="Info">
-                                                <rect key="frame" x="334" y="39" width="25" height="25"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="Down"/>
-                                                <connections>
-                                                    <action selector="downPressed:" destination="tDw-oh-gSm" eventType="touchUpInside" id="o44-OH-rKs"/>
-                                                    <action selector="downPressed:" destination="7k0-pM-aj4" eventType="touchUpInside" id="qfP-MU-gpf"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Mode" prompt=" " id="h06-0I-fiS"/>
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SELECT MODE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RD-Op-TxI">
@@ -1379,6 +1349,16 @@ Cg
                                     <action selector="ecoButtonSelectedWithSender:" destination="tDw-oh-gSm" eventType="touchUpInside" id="2vr-oY-CyH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3O7-Uh-OyY" userLabel="Info">
+                                <rect key="frame" x="328" y="45" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="Down"/>
+                                <connections>
+                                    <action selector="downPressed:" destination="7k0-pM-aj4" eventType="touchUpInside" id="E53-0w-B7f"/>
+                                    <action selector="downPressed:" destination="tDw-oh-gSm" eventType="touchUpInside" id="vbR-jg-tPz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -1406,7 +1386,6 @@ Cg
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="UQH-12-2gG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dkR-ql-wog">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1438,20 +1417,7 @@ Cg
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Battery" prompt=" " id="Gvk-w6-0f0">
-                                        <barButtonItem key="rightBarButtonItem" id="4Ze-5F-EEl">
-                                            <button key="customView" opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TRe-uB-wPg" userLabel="Down">
-                                                <rect key="frame" x="334" y="39" width="25" height="25"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="Down"/>
-                                                <connections>
-                                                    <action selector="downPressed:" destination="T9b-dq-Lzq" eventType="touchUpInside" id="EEp-tR-wWN"/>
-                                                    <action selector="downPressed:" destination="7k0-pM-aj4" eventType="touchUpInside" id="Fbl-cL-lt9"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Battery" prompt=" " id="Gvk-w6-0f0"/>
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BATTERY LEVEL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6h-WL-X3N">
@@ -1699,6 +1665,16 @@ Cg
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0e-sh-cWW" userLabel="Down">
+                                <rect key="frame" x="328" y="45" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="Down"/>
+                                <connections>
+                                    <action selector="downPressed:" destination="T9b-dq-Lzq" eventType="touchUpInside" id="c5I-Ee-SgN"/>
+                                    <action selector="downPressed:" destination="7k0-pM-aj4" eventType="touchUpInside" id="cAy-UT-TAM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

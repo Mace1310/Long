@@ -35,7 +35,7 @@ class SettingsController: UIViewController, BluetoothDelegate, TransmissionsDele
         UpdateTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.updateValues), userInfo: nil, repeats: true);
     }
     
-    func updateValues() {
+    @objc func updateValues() {
         if BluetoothManager.isConnected {
             // Get throttle value
             // Update settings and status

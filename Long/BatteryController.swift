@@ -50,12 +50,12 @@ class BatteryController: UIViewController, TransmissionsDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func updateValues() {
+    @objc func updateValues() {
         TransmissionsManager.requestBatteryPercentage()
         TransmissionsManager.requestCellVoltage(0x01)
     }
     
-    func checkConnection() {
+    @objc func checkConnection() {
         if Bluetooth.CB.isConnected == false {
             UpdateTimer.invalidate()
             UpdateTimer = nil

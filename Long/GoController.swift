@@ -58,7 +58,7 @@ class GoController: UIViewController, TransmissionsDelegate {
         UpdateTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.updateValues), userInfo: nil, repeats: true);
     }
     
-    func updateValues() {
+    @objc func updateValues() {
         if BluetoothManager.isConnected {
             TransmissionsManager.requestRPM()
             TransmissionsManager.requestCurrent()
@@ -218,7 +218,7 @@ class GoController: UIViewController, TransmissionsDelegate {
         ThrottleValue = 0
     }
     
-    func cancelConfirmLabel() {
+    @objc func cancelConfirmLabel() {
         UIView.animate(withDuration: 0.5, animations: {
             self.ConfirmLabel.alpha = 0
         })
@@ -325,7 +325,7 @@ class GoController: UIViewController, TransmissionsDelegate {
         }
     }
     
-    func decellerate() {
+    @objc func decellerate() {
         if ThrottleValue != 0 {
             ThrottleValue -= 1
         }

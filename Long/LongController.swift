@@ -186,7 +186,7 @@ class LongController: UIViewController, UITextFieldDelegate, BluetoothDelegate, 
         enableControls()
     }
     
-    func updateValues() {
+    @objc func updateValues() {
         if BluetoothManager.isConnected {
             updateSignalStrength(strength: BluetoothManager.SignalStrength)
             TransmissionsManager.requestBoardName()
@@ -231,7 +231,7 @@ class LongController: UIViewController, UITextFieldDelegate, BluetoothDelegate, 
         ModeSelectedButton.setTitle("....", for: .normal)
         GOButton.isEnabled = false 
         ForwardIcon.isHidden = true
-        SETTINGSButton.isEnabled = true     //RIMETTERE FALSE
+        SETTINGSButton.isEnabled = false
         SystemStatusLabel.text = "DISCONNECTED"
     }
     
